@@ -6,11 +6,12 @@ namespace SEP_231_System
     {
         static void Main(string[] args)
         {
-            //var p = Process.GetProcesses()
-            //    .Where(z=>z.ProcessName == "notepad");
+            //var p = Process.GetProcesses().OrderBy(z=>z.ProcessName);
+            //    //.Where(z => z.ProcessName == "notepad");
             //foreach (var item in p)
-            //{                
+            //{
             //    Console.WriteLine($"{item.ProcessName}");
+            //    //item.Kill();
             //}
 
             //var p = from n in Process.GetProcesses()
@@ -28,8 +29,30 @@ namespace SEP_231_System
             //    }
             //}
 
-            var p = Process.Start("notepad");
-            Console.WriteLine(p.Id);
+            //int[] array = new int[5];
+
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    var p = Process.Start("notepad");
+            //    array[i] = p.Id;
+            //}
+
+
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    var p = Process.GetProcessById(array[i]);
+            //    if (p != null && p.ProcessName == "notepad")
+            //        p.Kill();
+            //}
+
+            //var p = Process.Start(@"C:\examples\123.xlsx");
+
+            var psi = new ProcessStartInfo(@"C:\examples\123.xlsx")
+            {
+                UseShellExecute = true
+            };
+
+            Process.Start(psi);
 
         }
     }
