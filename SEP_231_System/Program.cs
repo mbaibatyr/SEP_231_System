@@ -6,6 +6,25 @@ namespace SEP_231_System
     {
         static void Main(string[] args)
         {
+            if(args.Length == 0)
+            {
+                Console.WriteLine("без арг не запускать");
+                Console.ReadLine();
+                return;
+            }
+            var arg = args[0];
+            if(arg == "null")
+            {
+                var dt = DateTime.Now.AddDays(-1).Date;
+                Console.WriteLine($"{dt}");
+            }
+            else
+                Console.WriteLine($"{arg}");
+
+
+
+            //Console.ReadLine();
+
             //var p = Process.GetProcesses().OrderBy(z=>z.ProcessName);
             //    //.Where(z => z.ProcessName == "notepad");
             //foreach (var item in p)
@@ -47,12 +66,12 @@ namespace SEP_231_System
 
             //var p = Process.Start(@"C:\examples\123.xlsx");
 
-            var psi = new ProcessStartInfo(@"C:\examples\123.xlsx")
-            {
-                UseShellExecute = true
-            };
+            //var psi = new ProcessStartInfo(@"C:\examples\123.xlsx")
+            //{
+            //    UseShellExecute = true
+            //};
 
-            Process.Start(psi);
+            //Process.Start(psi);
 
         }
     }
