@@ -6,20 +6,23 @@ namespace SEP_231_System
     {
         static void Main(string[] args)
         {
-            if(args.Length == 0)
+
+            if (args.Length == 0)
             {
                 Console.WriteLine("без арг не запускать");
                 Console.ReadLine();
                 return;
             }
             var arg = args[0];
-            if(arg == "null")
+            if (arg == "null")
             {
                 var dt = DateTime.Now.AddDays(-1).Date;
                 Console.WriteLine($"{dt}");
             }
             else
                 Console.WriteLine($"{arg}");
+
+            Console.WriteLine($"{args[1]}");
 
 
 
