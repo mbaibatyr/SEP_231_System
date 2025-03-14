@@ -10,8 +10,8 @@ namespace MyDLL_Call
         public static extern int MessageBox(IntPtr hWnd, string text, string caption, int options);
         static void Main(string[] args)
         {
-            //MyClass myClass = new MyClass("");
-            //Console.WriteLine(myClass.SayHello("step"));
+            MyClass myClass = new MyClass("");
+            Console.WriteLine(myClass.SayHello("step"));
             //Console.WriteLine(myClass.GetSum(12, 13));
             //Console.WriteLine(MyClass.SayHello2("step222"));
 
