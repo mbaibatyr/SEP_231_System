@@ -5,8 +5,7 @@ namespace SEP_231_System
     internal class Program
     {
         static void Main(string[] args)
-        {
-
+        {            
             if (args.Length == 0)
             {
                 Console.WriteLine("без арг не запускать");
