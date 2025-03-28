@@ -5,9 +5,15 @@
         static void Main(string[] args)
         {
             var dt1 = DateTime.Now;
-            Calc();
+            for (int i = 0; i < 5; i++)
+            {
+                Thread thread = new Thread(Calc);
+                //thread.Name = "t" + i.ToString();
+                thread.Start(i + 1);
+            }
+            //Calc();
             var span = (DateTime.Now - dt1);
-            Console.WriteLine(span.TotalSeconds);
+            //Console.WriteLine(span.TotalSeconds);
             return;
 
 
@@ -56,9 +62,10 @@
             }
         }
 
-        static void Calc()
+        static void Calc(object ob)
         {
-            var lines = File.ReadAllLines(@"\\file-server\Share\Временные файлы\SEP-231\001.txt");
+            string st = ob.ToString();
+            var lines = File.ReadAllLines($@"\\file-server\Share\Временные файлы\SEP-231\00{st}.txt");
             double sum = 0;
             foreach (string line in lines)
             {
