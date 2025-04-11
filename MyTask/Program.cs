@@ -4,22 +4,18 @@
     {
         static void Main(string[] args)
         {
-            Task[] tasks = new Task[5];
-            for (int i = 0; i < 5; i++)
-            {
-                tasks[i] = new Task(Test);
-                tasks[i].Start();
-                
-                Console.WriteLine(Task.CurrentId);
-            }
+            //Method1();
 
-            Task.WaitAll(tasks);
 
-            //Console.WriteLine("Start");
-            //Task t = new Task(Test);
-            //t.Start();
-            //t.Wait();
-            Console.WriteLine("Finish");
+            var count = Method1().Result;
+            //var count = Method1().GetAwaiter().GetResult();
+            Console.WriteLine(count.ToString());
+            //await Method1();
+
+
+            //Method2();
+            //Method2();            
+            //Console.ReadKey();            
 
         }
 
@@ -30,6 +26,38 @@
                 Thread.Sleep(100);
                 Console.WriteLine($"{i} - {Thread.CurrentThread.ManagedThreadId}");
             }
+        }
+
+        public static async Task<int> Method1()
+        {
+            int count = 0;
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    Console.WriteLine(" Method 1_1");                    
+                    count++;
+                    Task.Delay(100).Wait();
+                }
+            });
+            await Task.Run(() =>
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Console.WriteLine(" Method 1_2");
+                    count++;
+                    Task.Delay(100).Wait();
+                }
+            });
+            await Task.Run(Method2);
+            Console.WriteLine(" FINISH ");
+            return count;
+        }
+        static void Method2()
+        {
+            Task.Delay(1000).Wait();
+            Console.WriteLine(" Method 2");
+            
         }
     }
 }
