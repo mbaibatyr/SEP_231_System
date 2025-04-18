@@ -19,5 +19,21 @@
     {
         public string Name { get; }
         public Person(string name) => Name = name;
+        public Person()
+        {
+            ;
+        }
+        public Person(int i)
+        {
+            ;
+        }
+    }
+
+    public interface IPerson
+    {
+        void SayHello(string name);
+        string GetHello(string name);
+        string GetHello(Person person);
+        Person GetHello(int i);
     }
 }
