@@ -6,17 +6,17 @@ namespace MyParallel
     {
         static void Main(string[] args)
         {
-            DownloadFile("https://portal.ksu.edu.kz/storage/app/media/docs/laws/resolutions/constitution_rk_rus.pdf");
+            //DownloadFile("https://portal.ksu.edu.kz/storage/app/media/docs/laws/resolutions/constitution_rk_rus.pdf");
 
-            //var numbers = Enumerable.Range(1, 1000000000);
+            var numbers = Enumerable.Range(1, 1000000000);
 
-            //var evenNumbers = numbers.AsParallel()
-            //                          //.WithDegreeOfParallelism(2)
-            //                          .Where(n => n % 2 == 0)
-            //                          .ToList();
+            var evenNumbers = numbers.AsParallel()
+                                      .WithDegreeOfParallelism(2)
+                                      .Where(n => n % 2 == 0)
+                                      .ToList();
 
-            //Console.WriteLine($"четных чисел {evenNumbers.Count}");
-            //return;
+            Console.WriteLine($"четных чисел {evenNumbers.Count}");
+            return;
 
             Console.WriteLine("Started");
             //Parallel.Invoke(
@@ -43,7 +43,7 @@ namespace MyParallel
                 if (z == "333")
                 {
                     Console.WriteLine("333 break");
-                    state.Break();
+                    state.Stop();
                 }
                 else
                 {
